@@ -14,5 +14,10 @@ public class Test : MonoBehaviour
     void Update()
     {
         
+        if (Input.GetButtonUp("Jump"))
+        {
+            Debug.Log("Space!");
+        }
+
     }
 }
