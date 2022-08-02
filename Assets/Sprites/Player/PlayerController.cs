@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(Animator))]
+[RequiredComponent(typeof(Shoot))]
 
 
 public class PlayerController : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator anim;
+    Shoot fireScript;
 
     public float speed = 5.0f;
     public int jumpForce = 300;
@@ -46,12 +48,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        AnimatorClipInfo[] curPlayingClip = anim.GetCurrentAnimatorClipInfo(0);
+
         float hInput = Input.GetAxisRaw("Horizontal");
         float vInput = Input.GetAxisRaw("Vertical");
         bool isFired = Input.GetButtonDown("Fire1");
 
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer);
+
+        if (curPlayingClip.Length > 0)
+        {
+            if (hInput.GetbuttonDown("Fire1") && curPlayingClip[0].clip.name !=
+                "Fire")
+                anim.SetTrigger("Fire");
+        }
 
         Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer);
 
@@ -72,6 +83,11 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isFired", isFired);
         anim.SetFloat("MoveValue", Mathf.Abs(hInput));
         anim.SetBool("isGrounded", isGrounded);
+
+        if(hInput > 0 && sr.flipX || hInput < 0 && !sr.flipX)
+        {
+            sr.flipX = (hInput < 0);
+        }
 
         //if(!isGrounded && isFired)
         //{
