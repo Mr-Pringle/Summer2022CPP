@@ -6,33 +6,47 @@ using UnityEngine.Events;
 public class Shoot : MonoBehaviour
 {
     SpriteRenderer sr;
-    Animator anim;
 
     public float projectileSpeed;
     public Transform spawnPointLeft;
     public Transform spawnPointRight;
+
     public Projectile projectilePrefab;
+
+    private void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+
+        if (projectileSpeed <= 0)
+            projectileSpeed = 7.0f;
+
+        if (!spawnPointLeft || !spawnPointRight || !projectilePrefab)
+        {
+            Debug.Log("Please set up default values in inspector for the Shoot script on " + gameObject.name);
+        }
+    }
 
     public void Fire()
     {
         if (!sr.flipX)
         {
-            projectilePrefab curProjectile = Instantiate(projectilePrefab,
-                spawnPointRight.position, SpawnPointRight.rotation);
+            Projectile curProjectile = Instantiate(projectilePrefab,
+                spawnPointRight.position, spawnPointRight.rotation);
             curProjectile.speed = projectileSpeed;
         }
         else
         {
-            projectilePrefab curProjectile = Instantiate(projectilePrefab,
+            Projectile curProjectile = Instantiate(projectilePrefab,
                 spawnPointLeft.position, spawnPointLeft.rotation);
+            curProjectile.speed = -projectileSpeed;
         }
         
     }
 
     // Start is called before the first frame update
-    void Start()
+    void start()
     {
-        
+
     }
 
     // Update is called once per frame

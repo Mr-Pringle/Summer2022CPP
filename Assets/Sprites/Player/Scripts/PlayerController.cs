@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(Animator))]
-[RequireComponent(typeof(Shoot))]
+
 
 
 public class PlayerController : MonoBehaviour
@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator anim;
-    Shoot fireScript;
 
     public float speed = 5.0f;
     public int jumpForce = 300;
@@ -59,9 +58,16 @@ public class PlayerController : MonoBehaviour
 
         if (curPlayingClip.Length > 0)
         {
-            if (hInput.GetbuttonDown("Fire1") && curPlayingClip[0].clip.name !=
-                "Fire")
+            if (Input.GetButtonDown("Fire1") && curPlayingClip[0].clip.name != "Fire")
                 anim.SetTrigger("Fire");
+            else if (curPlayingClip[0].clip.name == "Fire")
+                rb.velocity = Vector2.zero;
+            else
+            {
+                Vector2 moveDirection = new Vector2(hInput * speed, rb.velocity.y);
+                rb.velocity = moveDirection;
+            }
+
         }
 
         Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer);
@@ -77,8 +83,7 @@ public class PlayerController : MonoBehaviour
             isFired = true;
         }
 
-        Vector2 moveDirection = new Vector2(hInput * speed, rb.velocity.y);
-        rb.velocity = moveDirection;
+        
 
         anim.SetBool("isFired", isFired);
         anim.SetFloat("MoveValue", Mathf.Abs(hInput));
