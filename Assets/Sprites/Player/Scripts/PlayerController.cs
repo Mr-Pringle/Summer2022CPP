@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius =0.02f;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -53,8 +52,9 @@ public class PlayerController : MonoBehaviour
         float vInput = Input.GetAxisRaw("Vertical");
         bool isFired = Input.GetButtonDown("Fire1");
 
-
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, isGroundLayer);
+
+        
 
         if (curPlayingClip.Length > 0)
         {
@@ -62,8 +62,11 @@ public class PlayerController : MonoBehaviour
                 anim.SetTrigger("Fire");
             else if (curPlayingClip[0].clip.name == "Fire")
                 rb.velocity = Vector2.zero;
+            else if (curPlayingClip[0].clip.name == "JumpAttack")
+                rb.gravityScale = 5;
             else
             {
+                rb.gravityScale = 1;
                 Vector2 moveDirection = new Vector2(hInput * speed, rb.velocity.y);
                 rb.velocity = moveDirection;
             }
@@ -89,15 +92,17 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("MoveValue", Mathf.Abs(hInput));
         anim.SetBool("isGrounded", isGrounded);
 
-        if(hInput > 0 && sr.flipX || hInput < 0 && !sr.flipX)
+        if (hInput > 0 && sr.flipX || hInput < 0 && !sr.flipX)
         {
             sr.flipX = (hInput < 0);
         }
 
+        
         //if(!isGrounded && isFired)
         //{
 
         //}
 
     }
+
 }

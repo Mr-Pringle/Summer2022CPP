@@ -163,22 +163,22 @@ TextureImporter:
     second: Sprite_Mario_52
   - first:
       213: -991126873710766664
-    second: Sprite_Mario_53
+    second: JumpAttack1
   - first:
       213: -2451452407061476743
-    second: Sprite_Mario_54
+    second: JumpAttack2
   - first:
       213: -9079682761693699110
-    second: Sprite_Mario_55
+    second: JumpAttack3
   - first:
       213: 102199271187479275
-    second: Sprite_Mario_56
+    second: JumpAttack4
   - first:
       213: 4596178438584576817
-    second: Sprite_Mario_57
+    second: JumpAttack5
   - first:
       213: -223910129502012368
-    second: Sprite_Mario_58
+    second: JumpAttack6
   - first:
       213: -7734174553045002093
     second: Sprite_Mario_59
@@ -1399,7 +1399,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_53
+      name: JumpAttack1
       rect:
         serializedVersion: 2
         x: 185
@@ -1420,7 +1420,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_54
+      name: JumpAttack2
       rect:
         serializedVersion: 2
         x: 218
@@ -1441,7 +1441,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_55
+      name: JumpAttack3
       rect:
         serializedVersion: 2
         x: 253
@@ -1462,7 +1462,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_56
+      name: JumpAttack4
       rect:
         serializedVersion: 2
         x: 286
@@ -1483,7 +1483,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_57
+      name: JumpAttack5
       rect:
         serializedVersion: 2
         x: 315
@@ -1504,7 +1504,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_58
+      name: JumpAttack6
       rect:
         serializedVersion: 2
         x: 345
