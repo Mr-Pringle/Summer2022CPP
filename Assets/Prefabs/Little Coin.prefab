@@ -139,7 +139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8493627351857683712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee7af4e749d657f4388d1c9400e41f1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dcf6ca5f32ced94593215e5610fb661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPickup: 2
+  currentPickup: 0
