@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Fire1") && curPlayingClip[0].clip.name != "Fire")
                 anim.SetTrigger("Fire");
             else if (curPlayingClip[0].clip.name == "Fire")
-                rb.velocity = Vector2.zero;
+                rb.velocity = new Vector2((hInput * speed), rb.velocity.y) ;
             else if (curPlayingClip[0].clip.name == "JumpAttack")
                 rb.gravityScale = 5;
             else

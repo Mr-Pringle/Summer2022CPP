@@ -18,7 +18,7 @@ public class Shoot : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
 
         if (projectileSpeed <= 0)
-            projectileSpeed = 7.0f;
+            projectileSpeed = 9.0f;
 
         if (!spawnPointLeft || !spawnPointRight || !projectilePrefab)
         {
